@@ -1,0 +1,168 @@
+6.1
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n; 
+	int ilosc = 0;
+
+	cout << "Podaj liczbe: ";
+	cin >> n;
+
+	for(int i = 1; i <= n; ++i){
+		if(i % 5 == 0 && i % 3 != 0){
+            ilosc++;
+        }
+	}
+
+	cout << "Ilosc liczb naturalnych podzielnych przez 5 i niepodzielnych przez 3: " << ilosc << endl;
+
+	system("pause");
+    
+	return 0;
+}
+
+6.2
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct uczniowie {
+	string imie;
+	int informatyka;
+	int matematyka;
+	int biologia;
+	int polski;
+};
+
+
+int main()
+{
+	struct uczniowie lista[6];
+
+	cout << "Wprowadz dane szesciu uczniow." << endl;
+	for (int i = 0; i < 6; i++) {
+		cout << "Nr ucznia " << i + 1 << endl;
+		cout << "Podaj imie: ";
+		cin >> lista[i].imie;
+		cout << "Podaj ocene z informatyki: ";
+		cin >> lista[i].informatyka;
+		cout << "Podaj ocene z matematyki: ";
+		cin >> lista[i].matematyka;
+		cout << "Podaj ocene z biologii: ";
+		cin >> lista[i].biologia;
+		cout << "Podaj ocene z jezyka polskiego: ";
+		cin >> lista[i].polski;
+		cout << endl;
+	}
+
+	int ile_pytan;
+	cout << "Ile pytan ?: ";
+	cin >> ile_pytan;
+
+	int n_ucznia, n_przed;
+	for (int i = 0; i < ile_pytan; i++) {
+		cout << "Podaj numer ucznia (od 1 do 6): ";
+		cin >> n_ucznia;
+		if (n_ucznia >= 1 && n_ucznia <= 6) {
+			cout << "Podaj numer przedmiotu (od 1 do 4): ";
+			cin >> n_przed;
+			switch (n_przed) {
+			case 1:
+				cout << "\nUczen: " << lista[n_ucznia - 1].imie
+					<< ", ocena z informatyki: " << lista[n_ucznia - 1].informatyka << "\n" << endl;
+				break;
+			case 2:
+				cout << "\nUczen: " << lista[n_ucznia - 1].imie
+					<< ", ocena z matematyki: " << lista[n_ucznia - 1].matematyka << "\n" << endl;
+				break;
+			case 3:
+				cout << "\nUczen: " << lista[n_ucznia - 1].imie
+					<< ", ocena z biologii: " << lista[n_ucznia - 1].biologia << "\n" << endl;
+				break;
+			case 4:
+				cout << "\nUczen: " << lista[n_ucznia - 1].imie
+					<< ", ocena z jezyka polskiego: " << lista[n_ucznia - 1].polski << "\n" << endl;
+				break;
+			default:
+				cout << "Podany zostal zly numer" << endl;
+				break;
+			}
+		}
+		else cout << "Podany zostal zly numer" << endl;
+	}
+
+	system("pause");
+
+	return 0;
+}
+
+6.3
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Student {
+    string imie;
+    string nazwisko;
+    int numerIndeksu;
+};
+
+bool porownajStudentow(const Student &a, const Student &b) {
+    return a.numerIndeksu < b.numerIndeksu;
+}
+
+int main() {
+    vector<Student> studenci = {
+        {"Leo", "Kowal", 72165},
+        {"Maciej", "Demp", 783},
+        {"Alicja", "Kolecka", 260000},
+		{"Katarzyna", "Szczaw", 15}
+    };
+
+    cout << "Nieposortowany wektor studentów:" << endl;
+    for (const auto &student : studenci) {
+        cout << student.numerIndeksu << " " << student.imie << " " << student.nazwisko << endl;
+    }
+
+    sort(studenci.begin(), studenci.end(), porownajStudentow);
+
+    cout << "\nPosortowany wektor studentów:" << endl;
+    for (const auto &student : studenci) {
+        cout << student.numerIndeksu << " " << student.imie << " " << student.nazwisko << endl;
+    }
+
+    return 0;
+}
+
+6.4
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int main()
+{
+	int ilosc;
+	string wyrazenie;
+	string ciag;
+
+	cout << "Podaj string: ";
+	getline(cin, wyrazenie);
+	cout << "ilosc konkatenacji ?: ";
+	cin >> ilosc;
+
+	for (int i = 0; i <= ilosc; i++) {
+		ciag += wyrazenie;
+	}
+
+	cout << "Wynik konkatenacji:\n" << endl;
+
+	cout << ciag << "\n" << endl;
+
+	system("pause");
+
+	return 0;
+}
